@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Viewtech Architecture Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <style>
+        /* Inline CSS for contact page specific styles */
+        /* Contact Page Specific CSS */
+        body {
+            margin: 0;
+            padding: 0;
+            background: rgba(255, 255, 255, 0.9);
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        #contact-hero {
+            padding: 40px 20px; /* ✅ smaller padding */
+            height: auto;
+        }
+
+
+        #contact-hero h1 {
+            font-size: 3rem;
+            color: #2A2A2A;
+        }
+        .contact-container {
+            padding: 10px 20px;
+            max-width: 1200px;
+            margin-top: -80px;
+            margin: 0 auto;
+            align-items: stretch; /* ✅ forces equal height cards */
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+        .contact-form {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .contact-form:hover {
+            transform: translateY(-5px);
+        }
+        .contact-form h2 {
+            margin-bottom: 20px;
+            color: #2A2A2A;
+        }
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
+            transition: border-color 0.3s ease;
+        }
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            border-color: #8B6B4A;
+            outline: none;
+        }
+        .contact-form button {
+            padding: 15px 30px;
+            background: #8B6B4A;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+        .contact-form button:hover {
+            background: #6B4A3A;
+        }
+        .contact-map {
+            height: 100%; /* ✅ matches form height */
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .contact-map:hover {
+            transform: translateY(-5px);
+        }
+        .contact-map iframe {
+            width: 100%;
+            height: 100%; /* ✅ fills full card */
+            border: none;
+        }
+        @font-face {
+            font-family: 'MyCustomFont2';
+            src: url('fonts/Somer.otf') format('opentype');
+            font-weight: 300;
+        }
+
+        .inner-fonts {
+            font-family: 'MyCustomFont2', serif;
+            font-size: 35px;
+            font-weight: 400;
+            color: #800000;
+        }
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Viewtech</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <section id="contact-hero" class="reveal">
+        <div>
+            <h1>Get In Touch</h1>
+        </div>
+    </section>
+
+    <section id="contact-main" class="reveal">
+        <div class="container">
+            <div class="contact-container">
+                <div class="contact-form">
+                    <h2>Contact Us</h2>
+                    <form action="https://formsubmit.co/viewtech@gmail.com" method="POST">
+
+                        <!-- Redirect after submit -->
+                        <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
+
+                        <!-- Disable captcha -->
+                        <input type="hidden" name="_captcha" value="false">
+
+                        <!-- Custom email subject -->
+                        <input type="hidden" name="_subject" value="New Message from ViewTech Website">
+
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="tel" name="phone" placeholder="Your Phone" required>
+
+                        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+
+                        <button type="submit">Send Message</button>
+                    </form>
+
+                </div>
+                <div class="contact-map">
+                    <iframe src="https://www.google.com/maps?q=22.838444,88.623861&hl=en&z=17&output=embed" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+    <div class="footer-content">
+        <p>&copy; 2026 Viewtech Architecture Studio. All rights reserved.</p>
+
+        <div class="social-icons">
+
+            <!-- Facebook Link -->
+            <a href="https://www.facebook.com/share/1NmXLznVMN/"
+               target="_blank"
+               class="social-icon glass-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/918101731588"
+               target="_blank"
+               class="social-icon glass-icon">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+
+        </div>
+    </div>
+    </footer>
+
+    <div id="cursor-glow"></div>
+    <script src="script.js"></script>
+</body>
+</html>

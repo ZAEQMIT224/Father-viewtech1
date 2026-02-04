@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Viewtech Architecture Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- For icons -->
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+</head>
+<body class="projects-page">
+    <nav id="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Viewtech</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="expertise.html">Expertise</a></li>
+                <li><a href="start-project.html">Start a Project</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    <section id="projects-catalog" class="reveal">
+        <div class="container">
+            <div class="filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="residential">Residential</button>
+                <button class="filter-btn" data-filter="commercial">Commercial</button>
+                <button class="filter-btn" data-filter="interiors">Interiors</button>
+            </div>
+            <!-- 3D Infinite Horizontal Carousel (Enhanced for Seamless Loop) -->
+            <div class="carousel-container">
+                <div class="carousel" id="carousel">
+                <!-- Original cards -->
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Modern Villa')">
+                    <img src="image/hijalpukur.jpg" alt="Modern Villa" loading="eager" decoding="sync">
+                    <div class="card-overlay">
+                        <h3>Modern House</h3>
+                        <p>Hijalpukur, West Bengal, 2024</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="commercial" onclick="openDetail('Skyscraper Office')">
+                    <img src="image/school.jpg" alt="Skyscraper Office">
+                    <div class="card-overlay">
+                        <h3>Stratford Day School</h3>
+                        <p>Habra, West Bengal, Ongoing</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Luxury Interior')">
+                    <img src="image/anirban.jpg" alt="Luxury Interior">
+                    <div class="card-overlay">
+                        <h3>Modern Villa</h3>
+                        <p>Habra, West Bengal, Ongoing</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/kolkata.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern Villa</h3>
+                        <p>Garia, West Bengal, 2007</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/shintu.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern Villa</h3>
+                        <p>Jadavpur, West Bengal, 2009</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/nilu da.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern House</h3>
+                        <p>Michael Nagar, Kolkata, West Bengal, 2025</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/q.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern House</h3>
+                        <p>Ashokenagar, West Bengal, 2025</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/RESIDENTIAL.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern Villa</h3>
+                        <p>West Bengal, 2016</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/ashooo.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern House</h3>
+                        <p>Ashokenagar, West Bengal, 2020</p>
+                    </div>
+                </div>
+                <!-- Duplicated sets for infinite loop -->
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Modern Villa')">
+                    <img src="image/hijalpukur.jpg" alt="Modern Villa" loading="eager" decoding="sync">
+                    <div class="card-overlay">
+                        <h3>Modern House</h3>
+                        <p>Hijalpukur, West Bengal, 2024</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="commercial" onclick="openDetail('Skyscraper Office')">
+                    <img src="image/school.jpg" alt="Skyscraper Office">
+                    <div class="card-overlay">
+                        <h3>Stratford Day School</h3>
+                        <p>Habra, West Bengal, Ongoing</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Luxury Interior')">
+                    <img src="image/anirban.jpg" alt="Luxury Interior">
+                    <div class="card-overlay">
+                        <h3>Modern Villa</h3>
+                        <p>Habra, West Bengal, Ongoing</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/kolkata.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern Villa</h3>
+                        <p>Garia, West Bengal, 2007</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/shintu.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern Villa</h3>
+                        <p>Jadavpur, West Bengal, 2009</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/nilu da.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern House</h3>
+                        <p>Michael Nagar, Kolkata, West Bengal, 2025</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/q.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern House</h3>
+                        <p>Ashokenagar, West Bengal, 2025</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/RESIDENTIAL.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern Villa</h3>
+                        <p>West Bengal, 2016</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/ashooo.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern House</h3>
+                        <p>Ashokenagar, West Bengal, 2020</p>
+                    </div>
+                </div>
+                <!-- Third set -->
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Modern Villa')">
+                    <img src="image/hijalpukur.jpg" alt="Modern Villa" loading="eager" decoding="sync">
+                    <div class="card-overlay">
+                        <h3>Modern House</h3>
+                        <p>Hijalpukur, West Bengal, 2024</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="commercial" onclick="openDetail('Skyscraper Office')">
+                    <img src="image/school.jpg" alt="Skyscraper Office">
+                    <div class="card-overlay">
+                        <h3>Stratford Day School</h3>
+                        <p>Habra, West Bengal, Ongoing</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Luxury Interior')">
+                    <img src="image/anirban.jpg" alt="Luxury Interior">
+                    <div class="card-overlay">
+                        <h3>Modern Villa</h3>
+                        <p>Habra, West Bengal, Ongoing</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/kolkata.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern Villa</h3>
+                        <p>Garia, West Bengal, 2007</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/shintu.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern Villa</h3>
+                        <p>Jadavpur, West Bengal, 2009</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/nilu da.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern House</h3>
+                        <p>Michael Nagar, Kolkata, West Bengal, 2025</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/q.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern House</h3>
+                        <p>Ashokenagar, West Bengal, 2025</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/RESIDENTIAL.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern Villa</h3>
+                        <p>West Bengal, 2016</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/ashooo.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern House</h3>
+                        <p>Ashokenagar, West Bengal, 2020</p>
+                    </div>
+                </div>
+                <!-- Fourth set -->
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Modern Villa')">
+                    <img src="image/hijalpukur.jpg" alt="Modern Villa" loading="eager" decoding="sync">
+                    <div class="card-overlay">
+                        <h3>Modern House</h3>
+                        <p>Hijalpukur, West Bengal, 2024</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="commercial" onclick="openDetail('Skyscraper Office')">
+                    <img src="image/school.jpg" alt="Skyscraper Office">
+                    <div class="card-overlay">
+                        <h3>Stratford Day School</h3>
+                        <p>Habra, West Bengal, Ongoing</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Luxury Interior')">
+                    <img src="image/anirban.jpg" alt="Luxury Interior">
+                    <div class="card-overlay">
+                        <h3>Modern Villa</h3>
+                        <p>Habra, West Bengal, Ongoing</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/kolkata.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern Villa</h3>
+                        <p>Garia, West Bengal, 2007</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/shintu.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern Villa</h3>
+                        <p>Jadavpur, West Bengal, 2009</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/nilu da.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern House</h3>
+                        <p>Michael Nagar, Kolkata, West Bengal, 2025</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/q.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern House</h3>
+                        <p>Ashokenagar, West Bengal, 2025</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/RESIDENTIAL.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern Villa</h3>
+                        <p>West Bengal, 2016</p>
+                    </div>
+                </div>
+                <div class="carousel-card glass-card" data-category="residential" onclick="openDetail('Urban Park')">
+                    <img src="image/ashooo.jpg" alt="Urban Park">
+                    <div class="card-overlay">
+                        <h3>Mordern House</h3>
+                        <p>Ashokenagar, West Bengal, 2020</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-content">
+        <p>&copy; 2026 Viewtech Architecture Studio. All rights reserved.</p>
+
+        <div class="social-icons">
+
+            <!-- Facebook Link -->
+            <a href="https://www.facebook.com/share/1NmXLznVMN/"
+               target="_blank"
+               class="social-icon glass-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/918101731588"
+               target="_blank"
+               class="social-icon glass-icon">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+
+        </div>
+    </div>
+    </footer>
+
+<div id="cursor-glow"></div>
+<script src="script.js"></script>
+<script>
+    // Filtering logic (unchanged)
+    const filters = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.carousel-card');
+
+    filters.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filters.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            const filter = btn.dataset.filter;
+            cards.forEach(card => {
+                if (filter === 'all' || card.dataset.category === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    });
+
+    function openDetail(title) {
+        window.location.href = `project-detail.html?title=${encodeURIComponent(title)}`;
+    }
+</script>
+
+</body>
+</html>

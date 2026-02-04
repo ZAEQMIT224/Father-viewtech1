@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start a Project - Viewtech Architecture Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <style>
+        /* =========================================
+           ANIMATED NAVBAR STYLES (Capsule to Bar)
+           ========================================= */
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            
+            /* STARTING STATE: Floating Capsule */
+            padding-top: 30px; 
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            /* CAPSULE SHAPE */
+            margin: 0 40px; 
+            padding: 20px 40px;
+            border-radius: 50px; 
+
+            /* Glass Effect */
+            background: rgba(255, 255, 255, 0.15); 
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4); 
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* SHRINK STATE (Triggered by Scroll) */
+        #navbar.shrink {
+            padding-top: 0;
+        }
+
+        #navbar.shrink .nav-container {
+            margin: 0; /* Full width */
+            border-radius: 0; /* Square corners */
+            padding: 15px 50px; /* Slimmer bar */
+            
+            background: rgba(255, 255, 255, 0.9); 
+            border: none;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        /* Logo & Link Adjustments */
+        .logo { margin: 0; font-size: 32px; transition: 0.4s; }
+        #navbar.shrink .logo { font-size: 24px; }
+        
+        .nav-links { display: flex; gap: 30px; list-style: none; }
+        .nav-links a { text-decoration: none; color: #800000; font-weight: 500; font-size: 16px; }
+        /* iOS Liquid Glass Styling - Start Project Page */
+        
+        #start-hero {
+            /* CHANGED: Increased height and added padding-top to push the slab down */
+            min-height: 60vh; 
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent; 
+            text-align: center;
+            position: relative;
+            
+            /* FIX: This padding ensures the card sits BELOW the navbar */
+            padding-top: 150px; 
+            padding-bottom: 50px;
+        }
+        
+        #start-hero .container {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        #start-hero h1 {
+            font-size: 3rem;
+            color: #800000; 
+            text-shadow: none;
+            margin-bottom: 10px;
+        }
+        #start-hero p {
+            font-size: 1.2rem;
+            color: #333;
+        }
+        section {
+            padding: 80px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h2 {
+            font-size: 2.5rem;
+            color: #2A2A2A;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        p {
+            color: #5F5F5F;
+            line-height: 1.6;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .step {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            cursor: pointer;
+        }
+        .step:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.8);
+        }
+        .step h3 {
+            color: #800000;
+            margin-bottom: 15px;
+        }
+        .glass-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .glass-form input,
+        .glass-form select,
+        .glass-form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.8);
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .glass-form input:focus,
+        .glass-form select:focus,
+        .glass-form textarea:focus {
+            border-color: #800000;
+            box-shadow: 0 0 0 3px rgba(128, 0, 0, 0.15);
+            outline: none;
+        }
+        .glass-form button {
+            width: 100%;
+            padding: 15px;
+            background: #800000; 
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.3s ease;
+        }
+        .glass-form button:hover {
+            background: #5a0000;
+            transform: translateY(-2px);
+        }
+        .glass-form button:active {
+            transform: scale(0.98);
+        }
+        .faq {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .faq:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+        .faq h4 {
+            color: #2A2A2A;
+            margin-bottom: 10px;
+        }
+        .faq p {
+            display: none;
+            color: #5F5F5F;
+        }
+        .faq.expanded p {
+            display: block;
+        }
+        blockquote {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+            color: #5F5F5F;
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        blockquote:hover {
+            transform: translateY(-5px);
+        }
+        @media (max-width: 768px) {
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+            #start-hero h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body class="projects-page">
+    <nav id="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Viewtech</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="expertise.html">Expertise</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="start-hero" class="reveal">
+        <div class="container">
+            <h1>Start Your Project</h1>
+            <p>Let's bring your vision to life. Follow these steps to begin your architectural journey with us.</p>
+        </div>
+    </section>
+
+    <section id="steps" class="reveal">
+        <div class="container">
+            <h2>How to Get Started</h2>
+            <div class="steps-grid">
+                <div class="step">
+                    <h3>1. Initial Consultation</h3>
+                    <p>Schedule a free 30-minute call to discuss your ideas. Prepare your site details and budget (typically ₹1,000 for initial phase).</p>
+                </div>
+                <div class="step">
+                    <h3>2. Site Assessment</h3>
+                    <p>We visit your location for measurements and analysis (1-2 weeks, included in consultation).</p>
+                </div>
+                <div class="step">
+                    <h3>3. Proposal & Contract</h3>
+                    <p>Receive a detailed proposal with timelines and costs. Sign to proceed (average project: 6-18 months).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="inquiry-form" class="reveal">
+        <div class="container">
+            <h2>Project Inquiry Form</h2>
+            <form class="glass-form" action="https://formsubmit.co/viewtech@gmail.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="New Architecture Inquiry!">
+                <input type="hidden" name="_next" value="https://viewtechstudio.com/thankyou.html">
+                <input type="hidden" name="_autoresponse" value="Thank you for contacting us! We will reply within 24 hours.">
+                <input type="text" name="_honey" style="display:none">
+
+                <input type="text" name="name" placeholder="Your Full Name" required>
+                <input type="email" name="email" placeholder="Your Email Address" required>
+                <input type="tel" name="phone" placeholder="Your Phone Number" required>
+                <select name="project-type" required>
+                    <option value="">Select Project Type</option>
+                    <option value="residential">Residential</option>
+                    <option value="commercial">Commercial</option>
+                    <option value="interiors">Interiors</option>
+                    <option value="urban">Urban Planning</option>
+                </select>
+                <input type="text" name="budget" placeholder="Budget Range (e.g., Rs. 30,00,000)">
+                <input type="text" name="timeline" placeholder="Preferred Timeline">
+                <textarea name="details" rows="4" placeholder="Describe your project vision..." required></textarea>
+                <button type="submit">Submit Inquiry</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="faqs" class="reveal">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq" onclick="toggleFAQ(this)">
+                <h4>What's the cost of a typical project?</h4>
+                <p>Small interior upgrades may start around ₹3–10 lakhs, while full home builds can range from ₹40 lakhs to ₹3+ crores. We provide accurate estimates after an initial consultation. Varies if outside India.</p>
+            </div>
+            <div class="faq" onclick="toggleFAQ(this)">
+                <h4>Do you handle permits?</h4>
+                <p>Yes, we manage all zoning and permitting for seamless execution.</p>
+            </div>
+            <div class="faq" onclick="toggleFAQ(this)">
+                <h4>How long does it take?</h4>
+                <p>Design phase: 1-3 months; full build: 6-24 months, depending on scope.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials" class="reveal">
+        <div class="container">
+            <h2>Client Testimonials</h2>
+            <blockquote>"Viewtech turned our dream home into reality—on time and on budget!" - Sarah L., Residential Client</blockquote>
+            <blockquote>"Their urban planning expertise transformed our community." - City of Portland</blockquote>
+        </div>
+    </section>
+
+    <footer>
+    <div class="footer-content">
+        <p>&copy; 2026 Viewtech Architecture Studio. All rights reserved.</p>
+
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/1NmXLznVMN/"
+               target="_blank"
+               class="social-icon glass-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://wa.me/918101731588"
+               target="_blank"
+               class="social-icon glass-icon">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+    </footer>
+
+    <div id="cursor-glow"></div>
+    <script src="script.js"></script>
+    <script>
+         // --- ADD THIS SCROLL LISTENER ---
+        window.addEventListener("scroll", function () {
+            const navbar = document.getElementById("navbar");
+
+            // If user scrolls down more than 50px, add the 'shrink' class
+            if (window.scrollY > 50) {
+                navbar.classList.add("shrink");
+            } else {
+                navbar.classList.remove("shrink");
+            }
+        });
+        function toggleFAQ(element) {
+            element.classList.toggle('expanded');
+        }
+
+        document.querySelector('.glass-form').addEventListener('submit', function(e) {
+            // e.preventDefault(); 
+        });
+
+        document.querySelectorAll('.step, .faq, blockquote, #resources li').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                el.style.transform = 'scale(1.02)';
+            });
+            el.addEventListener('mouseleave', () => {
+                el.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>

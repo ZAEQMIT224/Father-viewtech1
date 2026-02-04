@@ -1,0 +1,1653 @@
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Helvetica Neue', sans-serif;
+}
+/* ===== GLOBAL BACKGROUND SETUP ===== */
+html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+}
+
+/* Background image */
+body {
+    background-image: url("image/bg.jpg"); /* <-- adjust path if needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    color: #1F1F1F; /* Default text color */
+    font-family: 'Helvetica Neue', sans-serif;
+}
+
+/* Soft overlay for readability */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(244, 243, 241, 0.35); /* soft white tint */
+    z-index: -1;
+}
+
+/* Optional: make sure sections and cards are transparent to see background */
+section, .carousel-card, .project-card, .glass-card {
+    background: transparent !important;
+}
+
+body {
+    color: #000000; /* Black for text */
+    background: #FFFFFF; /* White background */
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-weight: 300;
+    margin-bottom: 20px;
+    color: #800000; /* Deep maroon for headings */
+}
+
+#about .container p {
+    max-width: 900px;
+    margin: 0 auto;
+    line-height: 1.9;
+    letter-spacing: 0.4px;
+    font-size: 18px;         /* optional: makes it cleaner */
+    max-width: 900px;        /* optional: better reading width */
+}
+#about h2 {
+    text-align: center;
+}
+#about p {
+    text-align: justify;
+    line-height: 1.9;
+    letter-spacing: 0.4px;
+    margin-bottom: 20px;
+}
+
+
+p {
+    margin-bottom: 20px;
+    color: #000000; /* Black for body text */
+}
+
+/* Loading Screen */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #FFFFFF, #F5F5F5); /* Light maroon-white gradient */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+.loading-content {
+    text-align: center;
+}
+
+.loading-svg {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.draw-line {
+    animation: draw 2s ease-in-out forwards;
+    stroke: #800000; /* Maroon for lines */
+}
+
+@keyframes draw {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+.build-block {
+    animation: build 0.5s ease-in-out forwards;
+    fill: #B22222; /* Firebrick maroon for blocks */
+}
+
+@keyframes build {
+    to {
+        opacity: 1;
+    }
+}
+
+.loading-text {
+    font-size: 1.2rem;
+    color: #800000; /* Maroon for text */
+    animation: fadeIn 1s ease-in-out 3s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* =========================================
+   ANIMATED NAVBAR STYLES
+   ========================================= */
+
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    
+    /* 1. STARTING STATE: Floating down from the top */
+    padding-top: 30px; 
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* 2. CAPSULE LOOK: Rounded with side margins */
+    margin: 0 40px; 
+    padding: 20px 40px;
+    border-radius: 50px; 
+
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.15); 
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.4); 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Logo Styling */
+.logo {
+    font-size: 32px;
+    font-weight: 700;
+    font-family: "Playfair Display", serif;
+    color: #800000; /* Maroon */
+    margin: 0;
+    transition: font-size 0.4s ease;
+}
+
+/* Link Styling */
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    color: #800000;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: #b35656;
+}
+
+/* =========================================
+   SHRINK STATE (Triggered by Scroll)
+   ========================================= */
+
+/* 1. Remove top gap so it sticks to the ceiling */
+#navbar.shrink {
+    padding-top: 0;
+}
+
+/* 2. Transform capsule into a full-width bar */
+#navbar.shrink .nav-container {
+    margin: 0; /* Full width */
+    border-radius: 0; /* Square corners */
+    padding: 15px 50px; /* Slimmer height */
+    
+    background: rgba(255, 255, 255, 0.9); /* Solid/Readable background */
+    border: none;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* 3. Shrink the logo text */
+#navbar.shrink .logo {
+    font-size: 24px;
+}
+
+
+/* Hero */
+#hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+/* GLASS OUTLINE TEXT STYLE */
+.hero-title {
+    font-size: 130px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+
+    /* 1. Make the text fill transparent so background shows through */
+    color: transparent; 
+
+    /* 2. Add the stroke (Outline) */
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.9);
+    
+    /* 3. The Subtle Glow */
+    text-shadow: 
+        0 0 30px rgba(255, 255, 255, 0.3), /* Soft wide glow */
+        0 0 10px rgba(255, 255, 255, 0.1); /* Tighter bright glow */
+
+    /* Optional: Letter spacing makes this style look more premium */
+    letter-spacing: -2px;
+}
+
+
+.hero-content {
+    text-align: center;
+    z-index: 2;
+    color: #FFFFFF; /* White text */
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 10px;
+    color: #FFFFFF; /* White heading */
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #800000, #DC143C, #B22222); /* Maroon gradient */
+    animation: liquidMotion 10s ease-in-out infinite;
+}
+
+@keyframes liquidMotion {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+/* Hero gradient blob (very soft animated background) */
+.hero-bg::before {
+    content: '';
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(128, 0, 0, 0.1), transparent 70%); /* Maroon blob */
+    border-radius: 50%;
+    animation: floatBlob 20s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes floatBlob {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    25% { transform: translate(50px, -30px) scale(1.1); }
+    50% { transform: translate(-20px, 50px) scale(0.9); }
+    75% { transform: translate(30px, 20px) scale(1.05); }
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 10px;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    cursor: pointer;
+}
+
+.glass-btn {
+    background: linear-gradient(45deg, rgba(128, 0, 0, 0.1), rgba(220, 20, 60, 0.1)); /* Maroon gradient glass */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(128, 0, 0, 0.2); /* Maroon border */
+    color: #FFFFFF; /* White text */
+}
+
+.glass-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 32px rgba(128, 0, 0, 0.3); /* Maroon shadow */
+}
+
+/* Liquid glass glow accents (subtle on buttons, nav, featured cards) */
+.glass-btn:hover::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, rgba(128, 0, 0, 0.2), rgba(220, 20, 60, 0.1)); /* Maroon glow */
+    border-radius: 27px;
+    z-index: -1;
+    animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
+/* =========================================
+   LIQUID JUMPING BUTTONS
+   ========================================= */
+
+/* 1. The Container */
+.cta-buttons {
+    /* Existing styles... */
+    position: relative;
+    display: inline-flex;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 8px;
+    border-radius: 50px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+
+    /* --- NEW LINE FOR MOBILE DRAG --- */
+    touch-action: none; /* Prevents page scroll while touching this area */
+}
+
+/* 2. The Buttons (Text Links) */
+.btn-link {
+    position: relative;
+    z-index: 2; /* Sits ON TOP of the blob */
+    padding: 15px 35px;
+    font-size: 1.1rem;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff; /* White text looks best on glass */
+    transition: color 0.3s ease;
+    border-radius: 40px;
+}
+
+/* 3. The Moving Liquid Blob */
+.liquid-blob {
+    position: absolute;
+    top: 8px; /* Matches padding of container */
+    left: 8px;
+    z-index: 1; /* Sits BEHIND text */
+    
+    /* Start with size of first button (will update via JS) */
+    width: 0; 
+    height: 0;
+    opacity: 0; /* Hidden until JS loads */
+
+    border-radius: 40px;
+    
+    /* THE LIQUID GLASS STYLE */
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1));
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 
+        0 4px 15px rgba(0, 0, 0, 0.1),
+        inset 0 0 10px rgba(255, 255, 255, 0.2);
+
+    /* The Smooth Jump Animation */
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* Optional: Darken text on active button for contrast */
+.btn-link:hover {
+    color: #800000; /* Maroon text when hovered */
+    text-shadow: none;
+}
+/* Sections */
+section {
+    padding: 80px 0;
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+/* Horizontal Scroll (for showcase in index.html) */
+.horizontal-scroll {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    overflow: hidden;   /* kills scrollbar */
+}
+
+.card {
+    min-width: 300px;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(128, 0, 0, 0.1); /* Maroon shadow */
+    transition: transform 0.3s ease;
+}
+
+.glass-card {
+    background: linear-gradient(45deg, rgba(128, 0, 0, 0.1), rgba(220, 20, 60, 0.1)); /* Maroon gradient glass */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(128, 0, 0, 0.2); /* Maroon border */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.project-card {
+    padding: 20px;
+    background: #FFFFFF; /* White background */
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(128, 0, 0, 0.1); /* Maroon shadow */
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+.project-card .info {
+  padding: 18px 22px;
+  text-align: left;
+}
+
+
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(128, 0, 0, 0.2); /* Deeper maroon shadow */
+}
+
+.project-card img {
+    border-radius: 16px;
+    overflow: hidden;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+/* Catalog visual depth (overlay gradient, title slide, glass tag pill) */
+.project-card {
+    position: relative;
+    z-index: 2;
+}
+
+.project-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent 60%, rgba(128, 0, 0, 0.3)); /* Maroon overlay */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.project-card:hover::after {
+    opacity: 1;
+}
+
+.project-card h3 {
+    position: relative;
+    transition: transform 0.3s ease;
+    color: #FFFFFF; /* White text on overlay */
+}
+
+.project-card:hover h3 {
+    transform: translateY(-5px);
+}
+
+.project-card::before {
+    content: attr(data-category);
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(45deg, rgba(128, 0, 0, 0.1), rgba(220, 20, 60, 0.1)); /* Maroon gradient glass */
+    backdrop-filter: blur(5px);
+    border: 1px solid rgba(128, 0, 0, 0.2); /* Maroon border */
+    padding: 5px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    text-transform: capitalize;
+    color: #FFFFFF; /* White text */
+}
+
+/* ============================= */
+/* CONTACT SECTION FULL STYLE    */
+/* ============================= */
+
+#contact {
+  padding: 90px 20px;
+  background: #f6f6f6;
+  font-family: "Poppins", sans-serif;
+}
+
+/* Main Wrapper Layout */
+.contact-wrapper {
+  max-width: 1150px;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 70px;
+  align-items: start;
+}
+
+/* ============================= */
+/* LEFT SIDE TEXT                */
+/* ============================= */
+
+.contact-info .small-title {
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: gray;
+  margin-bottom: 18px;
+}
+
+.contact-info h2 {
+  font-size: 48px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.2;
+}
+
+.contact-info h2 span {
+  color: #7b0000;
+}
+
+.contact-info .desc {
+  margin-top: 20px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: #555;
+  max-width: 380px;
+}
+
+/* Contact Details */
+.contact-details {
+  margin-top: 30px;
+}
+
+.contact-details p {
+  font-size: 15px;
+  margin: 12px 0;
+  color: #222;
+}
+
+/* ============================= */
+/* RIGHT SIDE COLUMN (Form + Map)*/
+/* ============================= */
+
+.contact-form-card,
+.contact-card {
+  background: white;
+  border-radius: 20px;
+  padding: 35px;
+  box-shadow: 0px 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+/* Form Card spacing */
+.contact-form-card {
+  margin-bottom: 25px;
+}
+
+/* Form Layout */
+.contact-form-card form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Inputs */
+.contact-form-card input,
+.contact-form-card textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+.contact-form-card input:focus,
+.contact-form-card textarea:focus {
+  border-color: #7b0000;
+  box-shadow: 0 0 0 3px rgba(123, 0, 0, 0.15);
+}
+
+/* Textarea */
+.contact-form-card textarea {
+  height: 120px;
+  resize: none;
+}
+
+/* Button */
+.contact-form-card button {
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #7b0000;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.contact-form-card button:hover {
+  background: #550000;
+}
+
+/* ============================= */
+/* GOOGLE MAP CARD               */
+/* ============================= */
+
+.contact-card {
+  padding: 0;
+  overflow: hidden;
+}
+
+.contact-card iframe {
+  width: 100%;
+  height: 260px;
+  border: none;
+  border-radius: 20px;
+}
+/* ============================= */
+/* MAP HOVER ANIMATION ONLY      */
+/* ============================= */
+
+.contact-card {
+    height: 450px;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.contact-card:hover {
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0px 18px 45px rgba(0, 0, 0, 0.18);
+}
+
+.contact-card iframe {
+    height: 450px;
+  transition: transform 0.35s ease;
+}
+
+.contact-card:hover iframe {
+  transform: scale(1.03);
+}
+
+
+/* ============================= */
+/* RESPONSIVE (Mobile Layout)    */
+/* ============================= */
+
+@media (max-width: 950px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .contact-info h2 {
+    font-size: 38px;
+  }
+
+  .contact-info .desc {
+    margin: auto;
+  }
+
+  .contact-form-card,
+  .contact-card {
+    padding: 25px;
+  }
+}
+
+
+/* Filters */
+.filters {
+    padding-top: 100px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 40px;
+}
+
+.filter-btn {
+    padding: 10px 20px;
+    border: none;
+    background: linear-gradient(45deg, #F5F5F5, #E0E0E0); /* Light maroon-white gradient */
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    color: #800000; /* Maroon text */
+}
+
+.filter-btn.active {
+    background: linear-gradient(45deg, #800000, #DC143C); /* Maroon gradient */
+    color: #FFFFFF; /* White text */
+}
+
+/* 3D Infinite Horizontal Carousel (for projects.html) */
+.carousel-container {
+    overflow: hidden;
+    padding: 40px 0;
+}
+
+.carousel {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    
+    /* 1. Force the container to be as wide as all cards combined */
+    width: max-content; 
+    
+    /* 2. Prevent wrapping */
+    flex-wrap: nowrap;
+
+    /* 3. Use the corrected animation */
+    animation: scroll-horizontal 80s linear infinite;
+    will-change: transform;
+}
+
+/* Optional: Pause on hover so users can click */
+.carousel:hover {
+    animation-play-state: paused;
+}
+
+.carousel-card {
+    position: relative;
+    flex: 0 0 auto;
+
+    width: 320px;   /* adjust later */
+    height: 420px;
+
+    margin: 0 24px;
+
+    transform: none;
+    box-shadow: none;
+
+    transition: transform 0.4s ease;
+}
+
+.carousel-card:hover {
+    transform: scale(1.04);
+}
+
+/* Fix for disappearing/flickering images in infinite scroll */
+.carousel-card img {
+    /* Existing styles... */
+    
+    /* NEW: Force GPU to keep texture in memory */
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+    
+    /* Ensure image doesn't get unloaded */
+    will-change: transform;
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    box-shadow: none;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    color: #FFFFFF; /* White text */
+}
+
+@keyframes scroll-horizontal {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Changed to -25% for smooth looping */
+    }
+}
+
+/* Progress dots for horizontal scroll */
+.progress-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background: rgba(128, 0, 0, 0.2); /* Maroon dots */
+    border-radius: 50%;
+    transition: background 0.3s ease;
+}
+
+.dot.active {
+    background: #800000; /* Deep maroon */
+}
+
+/* Active card highlight in horizontal scroll */
+.card.active {
+    transform: scale(1.02);
+    box-shadow: 0 6px 25px rgba(128, 0, 0, 0.2); /* Maroon shadow */
+}
+
+/* Project Banner */
+#projects {
+  position: relative;
+  padding: 80px 0;
+  background-image: url("image/11.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+#projects::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.6);
+  pointer-events: none;
+  z-index: 0;
+}
+
+
+#project-banner {
+    position: relative;
+    height: 60vh;
+    overflow: hidden;
+}
+
+#project-banner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.banner-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 40px;
+    background: linear-gradient(to top, rgba(128, 0, 0, 0.7), transparent); /* Maroon gradient */
+    color: #FFFFFF; /* White text */
+}
+
+/* Gallery */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 20px;
+    background: linear-gradient(45deg, #800000, #000000); /* Maroon-black gradient */
+    color: #FFFFFF; /* White text */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 15px;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.glass-icon {
+    background: linear-gradient(45deg, rgba(128, 0, 0, 0.1), rgba(220, 20, 60, 0.1)); /* Maroon gradient glass */
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(128, 0, 0, 0.2); /* Maroon border */
+    color: #FFFFFF; /* White icons */
+}
+
+.glass-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 20px rgba(128, 0, 0, 0.3); /* Maroon shadow */
+}
+
+/* Cursor Glow */
+#cursor-glow {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background: radial-gradient(circle, rgba(128, 0, 0, 0.3), transparent 70%); /* Maroon glow */
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transition: transform 0.1s ease;
+}
+
+/* Page transition fade */
+body {
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* Responsive */
+@media (min-width: 768px) {
+    .progress-dots {
+        display: none;
+    }
+}
+
+/* ===============================
+   ARCHITECTURAL SOFT PALETTE FIX
+   =============================== */
+
+/* Global tone softening */
+p {
+    color: #5F5F5F;
+}
+
+h1, h2, h3 {
+    color: #2A2A2A;
+}
+
+/* Accent control (replace harsh maroon) */
+:root {
+    --accent: #8B6B4A;
+    --accent-soft: rgba(139, 107, 74, 0.15);
+}
+
+/* Glass elements — calm & premium */
+.glass-btn,
+.glass-card,
+.glass-form,
+.glass-icon {
+    background: rgba(255, 255, 255, 0.55);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+}
+
+/* Buttons */
+.glass-btn {
+    color: #1F1F1F;
+}
+
+.glass-btn:hover {
+    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Contact inputs — readable & calm */
+.glass-form input,
+.glass-form textarea {
+    background: rgba(255, 255, 255, 0.75);
+    color: #1F1F1F;
+}
+
+.glass-form input::placeholder,
+.glass-form textarea::placeholder {
+    color: #8A8A8A;
+}
+
+/* Accent usage (very subtle) */
+.project-card::before,
+.filter-btn.active {
+    background: var(--accent-soft);
+    color: #1F1F1F;
+}
+
+/* Hero gradient — calm stone */
+.hero-bg {
+    background: linear-gradient(
+        135deg,
+        #E9E6E1,
+        #F4F3F1,
+        #DDD7CF
+    );
+}
+
+/* Footer — architectural dark stone */
+footer {
+    background: #1F1F1F;
+    color: #E6E6E6;
+}
+/* ===============================
+   MODERN iOS-STYLE CONTACT FORM
+   =============================== */
+
+#contact {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.glass-form {
+    width: 100%;
+    max-width: 420px;
+    padding: 32px 28px;
+    border-radius: 28px;
+
+    background: rgba(255, 255, 255, 0.65);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow:
+        0 30px 60px rgba(0, 0, 0, 0.12);
+
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+/* Title */
+.glass-form h3,
+.glass-form h2 {
+    text-align: center;
+    margin-bottom: 8px;
+    font-weight: 400;
+    color: #1F1F1F;
+}
+
+/* Inputs */
+.glass-form input,
+.glass-form textarea {
+    width: 100%;
+    padding: 14px 16px;
+
+    border-radius: 16px;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+
+    background: rgba(255, 255, 255, 0.85);
+    font-size: 0.95rem;
+    color: #1F1F1F;
+
+    transition: all 0.25s ease;
+}
+
+/* Placeholder */
+.glass-form input::placeholder,
+.glass-form textarea::placeholder {
+    color: #9A9A9A;
+}
+
+/* Focus state (iOS-like) */
+.glass-form input:focus,
+.glass-form textarea:focus {
+    outline: none;
+    border-color: rgba(139, 107, 74, 0.6);
+    box-shadow:
+        0 0 0 4px rgba(139, 107, 74, 0.15);
+}
+
+/* Textarea height */
+.glass-form textarea {
+    min-height: 120px;
+    resize: none;
+}
+
+/* Submit button */
+.glass-form button,
+.glass-form .glass-btn {
+    margin-top: 10px;
+    padding: 14px;
+
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: 500;
+
+    background: #1F1F1F;
+    color: #FFFFFF;
+    border: none;
+
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+/* Button hover */
+.glass-form button:hover,
+.glass-form .glass-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 35px rgba(0, 0, 0, 0.25);
+}
+
+/* Button press (iOS feel) */
+.glass-form button:active,
+.glass-form .glass-btn:active {
+    transform: scale(0.96);
+}
+/* ===== HERO BACKGROUND IMAGE SETUP ===== */
+
+#hero {
+    position: relative;
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    inset: 0;
+
+    background-image: url("image/hero.jpg");
+    background-size: cover;
+    background-position: center;
+
+    opacity: 0.75; /* image opacity */
+    z-index: 0;
+}
+
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(245, 243, 241, 0.55); /* soft overlay */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 720px;
+}
+/* ===== LIQUID GLASS HERO TEXT ===== */
+
+/* ===== iOS LIQUID GLASS HERO TEXT (NO BACKGROUND BLUR) ===== */
+
+/* GLASS OUTLINE TEXT STYLE */
+.hero-title {
+    font-size: 130px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 20px;
+
+    /* 1. Make the text fill transparent so background shows through */
+    color: transparent; 
+
+    /* 2. Add the stroke (Outline) */
+    -webkit-text-stroke: 2px rgba(255, 255, 255, 0.9);
+    
+    /* 3. The Subtle Glow */
+    text-shadow: 
+        0 0 30px rgba(255, 255, 255, 0.3), /* Soft wide glow */
+        0 0 10px rgba(255, 255, 255, 0.1); /* Tighter bright glow */
+
+    /* Optional: Letter spacing makes this style look more premium */
+    letter-spacing: -2px;
+}
+
+
+
+/* ===== NAVBAR HERO BLEND ===== */
+
+/* Navbar Container */
+/* ===== NAVBAR DEFAULT (Big) ===== */
+
+/* ===== NAVBAR DEFAULT (Big) ===== */
+
+#navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 999;
+    transition: 0.3s ease;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 25px 70px;
+    transition: padding 0.5s ease; /* smooth shrink */
+
+    background: rgba(244, 243, 241, 0.75);
+    backdrop-filter: blur(70px);
+}
+
+/* Logo Default Size */
+.logo {
+    font-family: 'MyCustomFont';
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: font-size 0.5s ease, letter-spacing 0.5s ease; /* smooth resizing */
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;          /* makes them side-by-side */
+    gap: 30px;              /* spacing */
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Links Default Size */
+.nav-links a {
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    color: darkred;
+    transition: font-size 0.5s ease, color 0.3s ease; /* smooth size & color */
+}
+
+/* Hover Effect */
+.nav-links a:hover {
+    color: #8b7355;
+}
+
+/* ===== SHRINK EFFECT ON SCROLL ===== */
+
+#navbar.shrink .nav-container {
+    padding: 12px 70px;
+}
+
+#navbar.shrink .logo {
+    font-size: 24px;
+}
+
+#navbar.shrink .nav-links a {
+    font-size: 15px;
+}
+
+
+/* ===== PROJECTS SECTION SEAMLESS BLEND FIX ===== */
+
+#projects-catalog {
+    position: relative;
+    background: linear-gradient(
+        to bottom,
+        #F4F3F1 0%,
+        #F4F3F1 65%,
+        rgba(244, 243, 241, 0.95) 80%,
+        rgba(244, 243, 241, 0.85) 100%
+    );
+    padding-bottom: 140px; /* important: removes hard stop */
+}
+
+/* Soft fade under carousel */
+#projects-catalog::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 160px;
+    background: linear-gradient(
+        to bottom,
+        rgba(244, 243, 241, 0),
+        #F4F3F1
+    );
+    pointer-events: none;
+}
+
+/* Match card fade with section */
+.card-overlay {
+    background: linear-gradient(
+        to top,
+        rgba(31, 31, 31, 0.85),
+        rgba(31, 31, 31, 0.45),
+        transparent
+    );
+}
+/* ===============================
+   CONTACT + MAP COMBINED CARD
+   =============================== */
+
+.contact-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 28px;
+
+    padding: 32px;
+    border-radius: 32px;
+
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(22px) saturate(160%);
+    -webkit-backdrop-filter: blur(22px) saturate(160%);
+
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    box-shadow: 0 35px 70px rgba(0, 0, 0, 0.12);
+}
+
+/* Left: Form */
+.contact-form-card {
+    flex: 1;
+    min-width: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Right: Map */
+.contact-map-card {
+    flex: 1;
+    min-width: 320px;
+
+    border-radius: 24px;
+    overflow: hidden;
+
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+}
+
+.contact-map-card iframe {
+    width: 100%;
+    height: 100%;
+    min-height: 360px;
+    border: none;
+    filter: grayscale(0.15) contrast(1.05);
+}
+
+/* Mobile stacking */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        flex-direction: column;
+        padding: 24px;
+    }
+
+    .contact-map-card iframe {
+        min-height: 280px;
+    }
+}
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+    outline: none;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #8b7355;
+}
+
+.contact-form button {
+    background: #8b7355;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.contact-form button:hover {
+    background: #a9926d;
+}
+/* CEO Section */
+#ceo {
+    padding: 100px 0;
+}
+
+.ceo-content {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.ceo-image img {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(128, 0, 0, 0.1); /* Maroon shadow */
+    transition: transform 0.3s ease;
+}
+
+.ceo-image img:hover {
+    transform: scale(1.05);
+}
+
+.ceo-bio {
+    flex: 1;
+    min-width: 300px;
+}
+
+.ceo-bio h3 {
+    font-size: 65px;
+    color: #800000; /* Maroon for name */
+    margin-bottom: 10px;
+}
+
+.ceo-title {
+    font-size: 20px;
+    font-style: italic;
+    color: #B22222; /* Firebrick for title */
+    margin-bottom: 20px;
+}
+
+.ceo-bio p {
+    color: #000000; /* Black for bio text */
+    line-height: 1.8;
+}
+
+/* Responsive for CEO Section */
+@media (max-width: 768px) {
+    .ceo-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .ceo-image img {
+        max-width: 300px;
+    }
+}
+/* Custom Font Definition */
+@font-face {
+    font-family: 'MyCustomFont'; /* Name you’ll use in CSS */
+    src: url('fonts/centurygothic.ttf') format('truetype');
+    font-weight: 800px; /* can be bold, 100-900, etc */
+    font-style: 300px;  /* can be italic */
+}
+@font-face {
+    font-family: 'MyCustomFont2';
+    src: url('fonts/Somer.otf') format('opentype');
+    font-weight: 300;
+}
+
+.inner-fonts {
+    font-family: 'MyCustomFont2', serif;
+    font-size: 35px;
+    font-weight: 400;
+    color: #800000;
+}
+
+/* FIX: Projects Catalog heading clipping */
+#projects-catalog h1 {
+    line-height: 1.3;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    overflow: visible;
+}
+/* Widen only the projects catalog section */
+#projects-catalog .container {
+    max-width: 1400px;
+    padding-left: 40px;
+    padding-right: 40px;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    backdrop-filter: blur(2px);
+    z-index: -1;
+}
+/* =========================================
+   PROJECTS PAGE SPECIFIC OVERRIDES
+   ========================================= */
+
+/* Override specific to the projects page (requires class="projects-page" in HTML) */
+body.projects-page {
+    background: none !important;
+}
+
+body.projects-page::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    
+    background-image: url("image/11.jpg");
+    background-size: cover !important;
+    background-position: center !important;
+    background-repeat: no-repeat !important;
+    background-attachment: fixed !important;
+    
+    /* This specific opacity setting is why we moved the image to ::before */
+    opacity: 0.5 !important; 
+    backdrop-filter: none !important;
+}
+/* ======================================================
+   GLASS CARDS - PROJECTS PAGE SPECIFIC (Kasun Style)
+   ====================================================== */
+
+/* 1. The Glass Container */
+body.projects-page .carousel-card {
+    /* Reset layout to allow padding */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 15px; /* Creates the glass rim around the image */
+    
+    /* The Premium Glass Effect */
+    background: rgba(255, 255, 255, 0.15); /* Slightly frosty */
+    backdrop-filter: blur(20px) saturate(160%); /* Heavy blur */
+    -webkit-backdrop-filter: blur(20px) saturate(160%);
+    
+    /* The "Cut Glass" Border */
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.6); /* Top light reflection */
+    border-left: 1px solid rgba(255, 255, 255, 0.4);
+    
+    /* Shape & Depth */
+    border-radius: 30px; /* Highly rounded corners */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15); /* Floating shadow */
+    
+    /* Adjust dimensions slightly if needed */
+    height: 460px; 
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+/* Hover Effect: Lifts up */
+body.projects-page .carousel-card:hover {
+    transform: translateY(-15px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
+    background: rgba(255, 255, 255, 0.25); /* Brighter on hover */
+}
+
+/* 2. The Project Image (Floating inside the glass) */
+body.projects-page .carousel-card img {
+    width: 100%;
+    height: 72%; /* Takes up top portion */
+    object-fit: cover;
+    border-radius: 20px; /* Inner rounded corners */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Separate visual layer */
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+/* 3. The Text Area (Clean typography below image) */
+body.projects-page .carousel-card .card-overlay {
+    position: static; /* Remove absolute positioning */
+    background: none; /* Remove dark gradient */
+    width: 100%;
+    height: auto;
+    padding-top: 18px; /* Space between image and text */
+    text-align: center;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Title Styling */
+body.projects-page .carousel-card .card-overlay h3 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #800000; /* Deep maroon to match your brand */
+    margin-bottom: 5px;
+    text-shadow: none;
+    transform: none !important; /* Stop hover movement on text */
+}
+
+/* Subtitle/Date Styling */
+body.projects-page .carousel-card .card-overlay p {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: #333333; /* Dark grey for contrast on the glass */
+    letter-spacing: 0.5px;
+    margin: 0;
+}

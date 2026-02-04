@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@400;600;700&display=swap" rel="stylesheet">
+    <title>Viewtech Architecture Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- For icons -->
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen">
+        <div class="loading-content">
+            <svg class="loading-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <!-- Floor Plan Grid (drawn in) -->
+                <g class="floor-plan" stroke="#333" stroke-width="1" fill="none">
+                    <line x1="20" y1="20" x2="180" y2="20" class="draw-line" stroke-dasharray="160" stroke-dashoffset="160"></line>
+                    <line x1="20" y1="60" x2="180" y2="60" class="draw-line" stroke-dasharray="160" stroke-dashoffset="160"></line>
+                    <line x1="20" y1="100" x2="180" y2="100" class="draw-line" stroke-dasharray="160" stroke-dashoffset="160"></line>
+                    <line x1="20" y1="140" x2="180" y2="140" class="draw-line" stroke-dasharray="160" stroke-dashoffset="160"></line>
+                    <line x1="20" y1="180" x2="180" y2="180" class="draw-line" stroke-dasharray="160" stroke-dashoffset="160"></line>
+                    <line x1="20" y1="20" x2="20" y2="180" class="draw-line" stroke-dasharray="160" stroke-dashoffset="160"></line>
+                    <line x1="60" y1="20" x2="60" y2="180" class="draw-line" stroke-dasharray="160" stroke-dashoffset="160"></line>
+                    <line x1="100" y1="20" x2="100" y2="180" class="draw-line" stroke-dasharray="160" stroke-dashoffset="160"></line>
+                    <line x1="140" y1="20" x2="140" y2="180" class="draw-line" stroke-dasharray="160" stroke-dashoffset="160"></line>
+                    <line x1="180" y1="20" x2="180" y2="180" class="draw-line" stroke-dasharray="160" stroke-dashoffset="160"></line>
+                    <!-- Building Silhouette (builds up) -->
+                    <rect x="70" y="160" width="60" height="20" fill="#e0e0e0" class="build-block" opacity="0"></rect>
+                    <rect x="70" y="140" width="60" height="20" fill="#d0d0d0" class="build-block" opacity="0"></rect>
+                    <rect x="70" y="120" width="60" height="20" fill="#c0c0c0" class="build-block" opacity="0"></rect>
+                    <rect x="70" y="100" width="60" height="20" fill="#b0b0b0" class="build-block" opacity="0"></rect>
+                    <rect x="70" y="80" width="60" height="20" fill="#a0a0a0" class="build-block" opacity="0"></rect>
+                </g>
+            </svg>
+            <p class="loading-text">Designing Spaces...</p>
+        </div>
+    </div>
+
+    <nav id="navbar">
+    <div class="nav-container">
+        <h1 class="logo">Viewtech</h1>
+        <ul class="nav-links">
+            <li><a href="start-project.html">Start a Project</a></li>
+            </ul> 
+    </div>
+</nav>
+
+    <section id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Designing Timeless Spaces</h1>
+            <p>Where innovation meets elegance in architecture.</p>
+            <div class="cta-buttons">
+                <div class="liquid-blob"></div>
+                <a href="projects.html" class="btn glass-btn">View Projects</a>
+                <a href="expertise.html" class="btn glass-btn">Why Us</a>
+            </div>
+        </div>
+        <div class="hero-bg"></div>
+    </section>
+
+    <section id="about" class="reveal">
+        <div class="container">
+            <h2 class="inner-fonts">About Us</h2>
+            <p>The Vision At Viewtech, architecture is viewed not merely as construction, but as a dialogue between the environment and the individual. The goal is simple yet ambitious: to transform abstract concepts into tangible, breathing spaces that resonate with clarity and purpose.
+
+                The Approach Every project begins with a blank slate and a dedication to detail. By prioritizing a streamlined, client-focused process, Viewtech ensures that the final design is a pure reflection of the client’s intent, filtered through a lens of modern sophistication and technical precision. There are no layers of bureaucracy here—only direct, focused design thinking.
+
+                The Promise From the initial sketch to the final stone laid, the focus remains on craftsmanship and narrative. It is about creating environments that stand the test of time, where form follows function in the most elegant way possible.</p>
+        </div>
+    </section>
+
+    <section id="featured" class="reveal">
+        <div class="container">
+            <h2 class="inner-fonts">Featured Projects</h2>
+            <div class="grid">
+                <div class="project-card" data-category="residential" onclick="window.location.href='projects.html'">
+                    <img src="image/hijalpukur.jpg" alt="Project 1">
+                    <h3>Modern House</h3>
+                    <p>Hijalpukur, West Bengal, 2024</p>
+                </div>
+                <div class="project-card" data-category="commercial" onclick="window.location.href='projects.html'">
+                    <img src="image/sds.jpg" alt="Project 2">
+                    <h3>School</h3>
+                    <p>Habra, West Bengal, Ongoing</p>
+                </div>
+                <div class="project-card" data-category="residential" onclick="window.location.href='projects.html'">
+                    <img src="image/anirban.jpg" alt="Project 3">
+                    <h3>Modern Villa</h3>
+                    <p>Habra, West Bengal, Ongoing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="showcase" class="reveal">
+        <div class="container">
+            <h2 class="inner-fonts">Our Services</h2>
+            <div class="horizontal-scroll" id="horizontal-slider">
+                <div class="card glass-card">
+                    <h3>Residential Architecture</h3>
+                    <p>Custom homes tailored to your lifestyle.
+                       The studio specializes in designing bespoke residences that articulate the unique lifestyle of the inhabitant.</p>
+                </div>
+                <div class="card glass-card">
+                    <h3>Commercial Design</h3>
+                    <p>Modern offices and retail spaces.
+                       This service focuses on developing high-performance commercial environments—from dynamic corporate offices to experiential retail outlets.</p>
+                </div>
+                <div class="card glass-card">
+                    <h3>Interior Planning</h3>
+                    <p>Seamless interiors that reflect your vision.
+                       By meticulously selecting palettes, textures, and lighting, VIEWTECH transforms bare shells into immersive environments.</p>
+                </div>
+                <div class="card glass-card">
+                    <h3>Urban Concepts</h3>
+                    <p>Innovative urban planning solutions.
+                       By meticulously selecting palettes, textures, and lighting, Viewtech transforms bare shells into immersive environments.</p>
+                </div>
+                <div class="card glass-card">
+                    <h3>Architectural Visualization</h3>
+                    <p>Advanced 3D rendering and visualization techniques are employed to bridge the gap between abstract blueprints and tangible reality.</p>
+                </div>
+                <div class="card glass-card">
+                    <h3>Renovation & Adaptive Reuse</h3>
+                    <p>This service focuses on the thoughtful transformation of older spaces, blending historical character with modern utility.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New CEO Section -->
+    <section id="ceo" class="reveal">
+        <div class="container">
+            <h2 class="inner-fonts">Meet Our Architect</h2>
+            <div class="ceo-content">
+                <div class="ceo-image">
+                    <img src="image/Tapas-Baidik.jpg" alt="Er - Tapas Baidik"> <!-- Replace with actual CEO image -->
+                </div>
+                <div class="ceo-bio">
+                    <h3>Tapas Baidik</h3>
+                    <p class="ceo-title">Architect</p>
+                    <p>With over 20 years of experience in architecture and urban planning, Tapas Baidik has led Viewtech to redefine modern design. Their visionary approach combines sustainability with innovation, resulting in award-winning projects worldwide. Passionate about creating spaces that inspire, Tapas holds a Master's in Architecture from MIT and has been featured in leading design publications.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="contact-wrapper">
+
+            <!-- LEFT SIDE -->
+            <div class="contact-info">
+                <p class="small-title">WE’RE HERE TO HELP YOU</p>
+
+                <h2>
+                    Discuss Your <br />
+                    <span>Architecture</span> Needs
+                </h2>
+
+                <p class="desc">
+                    Reach out for modern design solutions tailored to your space.
+                </p>
+
+                <div class="contact-details">
+                    <p>📧 viewtech@gmail.com</p>
+                    <p>📞 +91 79084 67255</p>
+                    <p>📍 Kolkata, India</p>
+                </div>
+            </div>
+
+            <!-- RIGHT SIDE FORM CARD -->
+            <div class="contact-form-card">
+                <form action="https://formsubmit.co/viewtech@gmail.com" method="POST">
+
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://yourwebsite.com/thankyou.html">
+
+                    <input type="text" name="name" placeholder="Name" required />
+                    <input type="email" name="email" placeholder="Email" required />
+                    <input type="text" name="phone" placeholder="Phone Number" required />
+                    <textarea name="message" placeholder="Message" required></textarea>
+
+                    <button type="submit">Send Message →</button>
+
+                </form>
+
+
+            </div>
+
+
+            <!-- Google Map Card -->
+            <div class="contact-card">
+                <iframe
+                    width="100%"
+                    height="300"
+                    style="border:0;"
+                    loading="lazy"
+                    allowfullscreen
+                    referrerpolicy="no-referrer-when-downgrade"
+                    src="https://www.google.com/maps?q=22.838444,88.623861&hl=en&z=17&output=embed">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+    <div class="footer-content">
+        <p>&copy; 2026 Viewtech Architecture Studio. All rights reserved.</p>
+
+        <div class="social-icons">
+
+            <!-- Facebook Link -->
+            <a href="https://www.facebook.com/share/1NmXLznVMN/"
+               target="_blank"
+               class="social-icon glass-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/918101731588"
+               target="_blank"
+               class="social-icon glass-icon">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+
+        </div>
+    </div>
+    </footer>
+
+
+    <div id="cursor-glow"></div>
+    <script src="script.js"></script>
+    <script>
+        window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
+
+        if (window.scrollY > 80) 
+            {
+                navbar.classList.add("shrink");
+            } 
+            else 
+            {
+                navbar.classList.remove("shrink");
+            }
+        });
+    </script>
+    <script>
+    // --- ADVANCED LIQUID DRAG ANIMATION ---
+    const buttons = document.querySelectorAll('.btn-link');
+    const blob = document.querySelector('.liquid-blob');
+    const container = document.querySelector('.cta-buttons');
+    
+    let activeIndex = 0; // Tracks which button is currently selected
+
+    // 1. Core Function: Move Blob to specific button
+    function moveBlob(targetBtn) {
+        const rect = targetBtn.getBoundingClientRect();
+        const containerRect = container.getBoundingClientRect();
+
+        const left = rect.left - containerRect.left;
+        const top = rect.top - containerRect.top;
+
+        blob.style.width = `${rect.width}px`;
+        blob.style.height = `${rect.height}px`;
+        blob.style.transform = `translate(${left}px, ${top}px)`;
+        blob.style.opacity = '1';
+        
+        // Update active index based on the target button
+        buttons.forEach((btn, index) => {
+            if(btn === targetBtn) activeIndex = index;
+        });
+    }
+
+    // 2. Initialize (Start at first button)
+    if(buttons.length > 0) {
+        setTimeout(() => moveBlob(buttons[0]), 100);
+    }
+
+    // 3. Desktop Hover Interaction
+    buttons.forEach(btn => {
+        btn.addEventListener('mouseenter', () => {
+            // Only move on hover if we aren't currently dragging on mobile
+            if (!isDragging) moveBlob(btn);
+        });
+    });
+
+    container.addEventListener('mouseleave', () => {
+        if (!isDragging) moveBlob(buttons[activeIndex]);
+    });
+
+    // --- 4. MOBILE DRAG PHYSICS (iPhone Style) ---
+    let isDragging = false;
+    let startX = 0;
+    let initialBlobLeft = 0;
+
+    // Helper to get X position from touch or mouse
+    function getX(e) {
+        return e.type.includes('mouse') ? e.pageX : e.touches[0].clientX;
+    }
+
+    // A. Touch Start
+    container.addEventListener('touchstart', (e) => {
+        isDragging = true;
+        startX = getX(e);
+        
+        // Disable the smooth transition for instant drag response
+        blob.style.transition = 'none'; 
+        
+        // Get current transform value (visual position)
+        const style = window.getComputedStyle(blob);
+        const matrix = new DOMMatrix(style.transform);
+        initialBlobLeft = matrix.m41; // The X translation
+    }, { passive: false });
+
+    // B. Touch Move (Real-time dragging)
+    container.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        
+        const currentX = getX(e);
+        const diff = currentX - startX;
+        let newLeft = initialBlobLeft + diff;
+
+        // Boundaries: Don't let it drag outside the container
+        const maxLeft = container.offsetWidth - blob.offsetWidth - 8; // 8 is padding
+        if (newLeft < 8) newLeft = 8;
+        if (newLeft > maxLeft) newLeft = maxLeft;
+
+        blob.style.transform = `translate(${newLeft}px, 8px)`; // 8px is top padding
+    }, { passive: false });
+
+    // C. Touch End (Snap Logic)
+    container.addEventListener('touchend', (e) => {
+        isDragging = false;
+        
+        // Re-enable smooth transition for the snap
+        blob.style.transition = 'all 0.4s cubic-bezier(0.23, 1, 0.32, 1)'; 
+
+        // Calculate which button is closest
+        const blobRect = blob.getBoundingClientRect();
+        const blobCenter = blobRect.left + blobRect.width / 2;
+        
+        let closestBtn = buttons[activeIndex]; // Default to current
+        let minDistance = Infinity;
+
+        buttons.forEach((btn, index) => {
+            const btnRect = btn.getBoundingClientRect();
+            const btnCenter = btnRect.left + btnRect.width / 2;
+            const dist = Math.abs(blobCenter - btnCenter);
+
+            if (dist < minDistance) {
+                minDistance = dist;
+                closestBtn = btn;
+            }
+        });
+
+        // Snap to the closest button
+        moveBlob(closestBtn);
+
+        // OPTIONAL: Navigate if they snapped to a new button
+        // Remove this if you only want visual snapping without auto-click
+        if(closestBtn !== buttons[activeIndex]) {
+             // Simulating a click after a short delay for visual feedback
+             setTimeout(() => {
+                 window.location.href = closestBtn.getAttribute('href');
+             }, 300);
+        }
+    });
+
+</script>
+</body>
+</html>

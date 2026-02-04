@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Detail - Viewtech Architecture Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- For icons -->
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Viewtech</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="expertise.html">Expertise</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="project-banner" class="reveal">
+        <img src="https://picsum.photos/1200/600?random=5" alt="Project Banner">
+        <div class="banner-overlay">
+            <h1 id="project-title">Project Title</h1>
+        </div>
+    </section>
+
+    <section id="project-description" class="reveal">
+        <div class="container">
+            <h2>Description</h2>
+            <p>This project showcases our commitment to timeless design. We integrated modern materials with sustainable practices to create a space that harmonizes with its environment.</p>
+            <p>Location: Placeholder City<br>Year: 2022<br>Client: Anonymous</p>
+        </div>
+    </section>
+
+    <section id="project-gallery" class="reveal">
+        <div class="container">
+            <h2>Gallery</h2>
+            <div class="gallery-grid">
+                <img src="https://picsum.photos/400x300?random=6" alt="Gallery 1">
+                <img src="https://picsum.photos/400x300?random=7" alt="Gallery 2">
+                <img src="https://picsum.photos/400x300?random=8" alt="Gallery 3">
+                <img src="https://picsum.photos/400x300?random=9" alt="Gallery 4">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+    <div class="footer-content">
+        <p>&copy; 2026 Viewtech Architecture Studio. All rights reserved.</p>
+
+        <div class="social-icons">
+
+            <!-- Facebook Link -->
+            <a href="https://www.facebook.com/share/1NmXLznVMN/"
+               target="_blank"
+               class="social-icon glass-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <!-- WhatsApp Link -->
+            <a href="https://wa.me/918101731588"
+               target="_blank"
+               class="social-icon glass-icon">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+
+        </div>
+    </div>
+    </footer>
+
+    <div id="cursor-glow"></div>
+    <script src="script.js"></script>
+    <script>
+        // Set project title from URL param
+        const urlParams = new URLSearchParams(window.location.search);
+        const title = urlParams.get('title') || 'Project Detail';
+        document.getElementById('project-title').textContent = title;
+    </script>
+</body>
+</html>

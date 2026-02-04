@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expertise - Viewtech Architecture Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <style>
+        /* =========================================
+           1. NAVBAR ANIMATION STYLES
+           ========================================= */
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: all 0.4s ease-in-out;
+            padding-top: 20px; /* Initial gap from top */
+        }
+
+          .nav-container {
+        margin: 0 40px; 
+        border-radius: 30px;
+        background: rgba(255, 255, 255, 0.1); 
+        backdrop-filter: blur(5px);
+        padding: 20px 40px;
+        transition: all 0.4s ease-in-out;
+        
+        /* Set border to none to HIDE the line */
+        border: none !important; 
+        
+        /* Optional: Add a soft shadow instead */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
+    }
+
+        /* The "Shrink/Minimized" State (triggered by JS) */
+        #navbar.shrink {
+            padding-top: 0; /* Sticks to top */
+        }
+
+        #navbar.shrink .nav-container {
+            margin: 0; /* Full width */
+            border-radius: 0; /* Square corners */
+            padding: 15px 40px; /* Smaller height */
+            background: rgba(255, 255, 255, 0.85); /* Stronger glass effect */
+            backdrop-filter: blur(20px);
+            border: none;
+            border-bottom: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        #navbar.shrink .logo {
+            font-size: 24px; /* Optional: Shrink logo text */
+        }
+
+        /* =========================================
+           2. HERO "UNREVEAL" (PARALLAX) STYLES
+           ========================================= */
+        #expertise-hero {
+        height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        position: relative;
+        
+        /* --- PUT YOUR NEW IMAGE HERE --- */
+        background-image: url("image/hero.jpg") !important; 
+        
+        /* This creates the unreveal/parallax effect */
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        
+        color: #fff;
+        z-index: 1; /* Ensures it stays behind scrolling content */
+    }
+
+    /* NEW (Footer removed) */
+        section:not(#expertise-hero) {
+        position: relative;
+        z-index: 2; 
+        background: rgba(244, 243, 241, 0.9); 
+        }
+        /* Dark overlay so text is readable on the hero image */
+        #expertise-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.4); /* Darkens the image */
+            z-index: 0;
+        }
+
+        /* Ensure content sits above the overlay */
+        #expertise-hero .container {
+            position: relative;
+            z-index: 1;
+        }
+
+        #expertise-hero h1 {
+            color: white; /* Ensure title is white */
+            font-size: 3.5rem;
+            text-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+        #expertise-hero p {
+            color: rgba(255, 255, 255, 0.9); /* Ensure subtext is white */
+            font-size: 1.3rem;
+            font-weight: 400;
+        }
+
+        /* =========================================
+           3. REST OF PAGE (Covers the Hero)
+           ========================================= */
+        
+        /* We need a background on the rest of the page so it "covers" 
+           the fixed hero image as you scroll up */
+        body {
+            background-color: #f4f3f1; /* Soft architectural white */
+            margin: 0;
+        }
+        
+        /* Add a wrapper or ensure sections have backgrounds */
+        section:not(#expertise-hero) {
+            background: rgba(244, 243, 241, 0.6); /* Semi-transparent to blend */
+            position: relative;
+            z-index: 2; /* Sits on top of the fixed hero */
+        }
+
+        /* Existing Styles Preserved below */
+        section {
+            padding: 60px 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        h2 {
+            margin-top: auto;
+            font-size: 2.5rem;
+            color: #2A2A2A;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        p {
+            color: #5F5F5F;
+            line-height: 1.6;
+        }
+        #philosophy {
+            padding-top: 5px;
+        }
+        #philosophy img {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        #philosophy img:hover {
+            transform: scale(1.05);
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .service-card, .team-member {
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        .service-card:hover, .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            background: rgba(255, 255, 255, 0.85);
+        }
+        .service-card h3, .team-member h3 {
+            color: #2A2A2A;
+            margin-bottom: 15px;
+        }
+        .team-member img {
+            width: 100%;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            transition: transform 0.3s ease;
+        }
+        .team-member img:hover {
+            transform: scale(1.05);
+        }
+        #process ol {
+            list-style: none;
+            counter-reset: step-counter;
+            padding: 0;
+        }
+        #process li {
+            counter-increment: step-counter;
+            margin-bottom: 20px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        #process li:hover {
+            transform: translateX(10px);
+        }
+        #process li::before {
+            content: counter(step-counter);
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #8B6B4A;
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+        #awards ul {
+            list-style: none;
+            padding: 0;
+        }
+        #awards li {
+            padding: 15px;
+            margin-bottom: 10px;
+            background: rgba(255, 255, 255, 0.65);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        #awards li:hover {
+            transform: translateY(-5px);
+        }
+        @font-face {
+            font-family: 'MyCustomFont2';
+            src: url('fonts/Somer.otf') format('opentype');
+            font-weight: 300;
+        }
+
+        .inner-fonts {
+            font-family: 'MyCustomFont2', serif;
+            font-size: 35px;
+            font-weight: 400;
+            color: #800000;
+        }
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            #expertise-hero h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 2rem;
+            }
+            .philosophy-wrapper{
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        .philosophy-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .philosophy-text {
+            flex: 1;
+        }
+
+        .philosophy-image {
+            flex: 1;
+            width: 100%;
+            max-width: 600px;
+            height: 350px;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .philosophy-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        #philosophy-slider {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        @media (max-width: 768px) {
+            .philosophy-image {
+                max-width: 100%;
+                height: 250px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav id="navbar">
+        <div class="nav-container">
+            <h1 class="logo">Viewtech</h1>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="start-project.html">Start a Project</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="expertise-hero" class="reveal">
+        <div class="container">
+            <h1 class="inner-fonts">Our Expertise</h1>
+            <p>Discover how Viewtech blends modern innovation, sustainable thinking, and timeless Indian design to create architecture that feels calm, elegant, and built to endure.</p>
+        </div>
+    </section>
+
+    <section id="philosophy" class="reveal">
+        <div class="container">
+            <h2 class="inner-fonts">Design Philosophy</h2>
+
+        <div class="philosophy-wrapper">
+            <div class="philosophy-text">
+                <p>
+                At Viewtech, we believe great design should feel peaceful, purposeful, and lasting.
+                Our philosophy combines contemporary minimalism with the warmth of traditional Indian
+                architecture, creating spaces that are both modern and deeply livable.
+                Whether we are designing residential homes in Kolkata or shaping sustainable
+                community-focused developments, our approach is always client-first — blending
+                eco-friendly planning, innovation, and timeless elegance into every project.
+                </p>
+            </div>
+
+            <div class="philosophy-image">
+                <img id="philosophy-slider" 
+                src="image/ashoke.jpg" 
+                alt="Design Philosophy Example">
+            </div>
+        </div>
+    </section>
+
+    <section id="services-detail" class="reveal">
+        <div class="container">
+            <h2 class="inner-fonts">Services in Depth</h2>
+            <div class="grid">
+                <div class="service-card glass-card">
+                    <h3>Residential Architecture</h3>
+                    <p>Custom homes tailored to lifestyles, with 50+ projects completed. Includes full design, permitting, and construction oversight. Not just homes we design habit that feel personal, peaceful, and timeless. Every residence is crafted around the client’s lifestyle, combining modern minimalism with warmth, comfort, and lasting elegance.</p>
+                </div>
+                <div class="service-card glass-card">
+                    <h3>Commercial Design</h3>
+                    <p>Modern offices and retail spaces optimized for productivity. Viewtech creates contemporary commercial spaces that reflect identity and purpose. From offices to retail environments, our designs balance functionality with a refined architectural presence.</p>
+                </div>
+                <div class="service-card glass-card">
+                    <h3>Urban Concepts</h3>
+                    <p>Innovative urban planning for communities. Includes zoning expertise and community impact assessments. Our urban planning approach focuses on sustainable communities and future-ready development. We design spaces that connect people, nature, and the built environment with clarity and harmony.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="reveal">
+        <div class="container">
+            <h2 class="inner-fonts">Our Process</h2>
+            <ol>
+                <li><strong>Consultation:</strong> Free initial meeting to discuss vision and needs (1-2 weeks).</li>
+                <li><strong>Design Phase:</strong> Conceptual sketches and 3D models (4-8 weeks).</li>
+                <li><strong>Approval & Refinement:</strong> Client feedback loops for revisions.</li>
+                <li><strong>Execution:</strong> Construction management with regular updates.</li>
+            </ol>
+            <p>Timeline varies by project; contact us for a personalized estimate.</p>
+        </div>
+    </section>
+
+    <section id="team" class="reveal">
+        <div class="container">
+            <h2 class="inner-fonts">Meet the Team</h2>
+            <div class="grid">
+                <div class="team-member">
+                    <img src="image/pops.jpg" alt="Lead Architect">
+                    <h3>Er. Tapas Baidik</h3>
+                    <p>Lead Architect, specializing in sustainable design. 30+ years experience, Class I LBS, Ashokenagar Municipal Corporation.</p>
+                </div>
+                <div class="team-member">
+                    <img src="image/capture.jpg" alt="Project Manager">
+                    <h3>S. Baidik</h3>
+                    <p>Project Manager, ensuring seamless execution.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="awards" class="reveal">
+        <div class="container">
+            <h2 class="inner-fonts">Awards & Certifications</h2>
+            <ul>
+                <li>AIA Design Excellence Award (2022)</li>
+                <li>LEED Platinum Certification for 15 projects</li>
+                <li>Partnership with Green Building Council</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+    <div class="footer-content">
+        <p>&copy; 2026 Viewtech Architecture Studio. All rights reserved.</p>
+
+        <div class="social-icons">
+            <a href="https://www.facebook.com/share/1NmXLznVMN/"
+               target="_blank"
+               class="social-icon glass-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+
+            <a href="https://wa.me/918101731588"
+               target="_blank"
+               class="social-icon glass-icon">
+                <i class="fab fa-whatsapp"></i>
+            </a>
+        </div>
+    </div>
+    </footer>
+
+    <div id="cursor-glow"></div>
+    <script src="script.js"></script>
+    <script>
+    
+    // --- 1. NAVBAR SCROLL EFFECT SCRIPT ---
+    // This listens for scrolling and toggles the 'shrink' class
+    window.addEventListener('scroll', function() {
+        const navbar = document.getElementById('navbar');
+        if (window.scrollY > 50) { // If scrolled more than 50px
+            navbar.classList.add('shrink');
+        } else {
+            navbar.classList.remove('shrink');
+        }
+    });
+
+    // --- 2. EXISTING SLIDER SCRIPT ---
+    const images = [
+        "image/anirban.jpg",
+        "image/hijalpukur.jpg",
+        "image/school.jpg",
+        "image/RESIDENTIAL.jpg",
+        "image/nilu da.jpg",
+        "image/kolkata.jpg",
+        "image/shintu.jpg"
+    ];
+
+    let currentIndex = 0;
+    const slider = document.getElementById("philosophy-slider");
+
+    setInterval(() => {
+        currentIndex = (currentIndex + 1) % images.length;
+        slider.style.opacity = 0;
+
+        setTimeout(() => {
+            slider.src = images[currentIndex];
+            slider.style.opacity = 1;
+        }, 400);
+    }, 6000);
+</script>
+</body>
+</html>
