@@ -1718,4 +1718,24 @@ body.projects-page .carousel-card .card-overlay p {
     #navbar.shrink .logo {
         font-size: 22px;
     }
+    }
+    /* =========================================
+   FIX: EXPERTISE PAGE MOBILE SPACING
+   ========================================= */
+    @media (max-width: 768px) {
+    #expertise-hero {
+        /* 1. Push content down below the tall navbar */
+        padding-top: 420px !important; 
+        
+        /* 2. Ensure the section is tall enough to fit everything */
+        min-height: 110vh !important; 
+        
+        /* 3. Align text slightly better */
+        align-items: flex-start !important; 
+    }
+
+    #expertise-hero .container {
+        /* Add a little gap from the very top of the visible area */
+        margin-top: 20px; 
+    }
 }
