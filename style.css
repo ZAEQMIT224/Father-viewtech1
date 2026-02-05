@@ -1739,90 +1739,9 @@ body.projects-page .carousel-card .card-overlay p {
     /* =========================================
    MOBILE SPACING FIX FOR PROJECTS PAGE
    ========================================= */
-    /* =========================================
-   NEW SLIM MOBILE NAVBAR (Horizontal Scroll)
-   ========================================= */
-@media (max-width: 768px) {
-    
-    /* 1. Slim Container Wrapper */
-    #navbar {
-        padding-top: 10px;
-    }
-    
-    .nav-container {
-        flex-direction: column; /* Logo Top, Links Bottom */
-        margin: 0 10px;
-        padding: 12px 15px; /* Much smaller padding */
-        gap: 12px; /* Tight gap between logo and links */
-        
-        border-radius: 20px;
-        background: rgba(255, 255, 255, 0.65); /* More visible glass */
-        backdrop-filter: blur(20px);
-        -webkit-backdrop-filter: blur(20px);
-        border: 1px solid rgba(255, 255, 255, 0.4);
-    }
-
-    /* 2. Smaller Logo */
-    .logo {
-        font-size: 20px;
-        margin: 0;
-    }
-
-    /* 3. Horizontal Scrollable Links Container */
-    .nav-links {
-        display: flex;
-        flex-direction: row; /* Force horizontal row */
-        justify-content: flex-start;
-        align-items: center;
-        width: 100%;
-        
-        gap: 10px;
-        
-        /* ENABLE HORIZONTAL SCROLLING */
-        overflow-x: auto; 
-        white-space: nowrap; /* Prevents wrapping to next line */
-        
-        /* Hide Scrollbar (Clean look) */
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
-        padding-bottom: 2px; /* Breathing room for shadow */
-    }
-    
-    /* Hide scrollbar for Chrome/Safari */
-    .nav-links::-webkit-scrollbar {
-        display: none;
-    }
-
-    /* 4. Mini Pills Style */
-    .nav-links li {
-        flex: 0 0 auto; /* Stop pills from squishing */
-    }
-
-    .nav-links a {
-        display: block;
-        padding: 8px 16px; /* Smaller clickable area */
-        font-size: 13px;   /* Smaller text */
-        
-        background: rgba(255, 255, 255, 0.5);
-        border-radius: 20px;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-        color: #800000;
-        font-weight: 600;
-    }
-    
-    /* 5. FIX THE CONTENT SPACING (Important!) */
+    @media (max-width: 768px) {
     #projects-catalog {
-        /* Reduce the padding since navbar is now slim */
-        padding-top: 160px !important; 
+        /* This pushes the cards down so they clear the tall mobile navbar */
+        padding-top: 480px !important; 
     }
-    
-    /* Mobile Shrink State (Optional - collapses to just logo) */
-    #navbar.shrink .nav-links {
-        display: none;
     }
-    #navbar.shrink .nav-container {
-        padding: 10px 20px;
-        flex-direction: row;
-        justify-content: space-between;
-    }
-}
