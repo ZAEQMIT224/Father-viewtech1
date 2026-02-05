@@ -1652,83 +1652,21 @@ body.projects-page .carousel-card .card-overlay p {
     margin: 0;
 }
 /* =========================================
-   GLOBAL MOBILE NAVBAR (Stacked Pills)
-   Put this in style.css
+   GLOBAL MOBILE NAVBAR (Vertical Stacked Pills)
+   Paste this at the bottom of style.css
    ========================================= */
 @media (max-width: 768px) {
     #navbar {
         padding-top: 10px;
     }
-    .nav-container {
-        flex-direction: column;
-        margin: 0 15px;
-        padding: 20px;
-        gap: 15px;
-        border-radius: 30px; 
-        background: rgba(255, 255, 255, 0.25);
-        backdrop-filter: blur(20px);
-    }
-    .nav-links {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
-    }
-    .nav-links a {
-        display: block;
-        text-align: center;
-        padding: 12px;
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 50px;
-        border: 1px solid rgba(255, 255, 255, 0.4);
-        font-size: 16px;
-        color: #800000;
-        font-weight: 600;
-    }
-    /* Shrink State */
-    #navbar.shrink .nav-container {
-        flex-direction: row;
-        padding: 15px;
-        border-radius: 0;
-        background: rgba(255, 255, 255, 0.95);
-    }
-    #navbar.shrink .nav-links {
-        display: none; 
-    }
-    #navbar.shrink .logo {
-        font-size: 22px;
-        margin: 0;
-    }
-    }
     
-    /* =========================================
-   FIX THE GAP ON PROJECTS PAGE (MOBILE)
-   ========================================= */
-@media (max-width: 768px) {
-    #projects-catalog {
-        /* Reduced to 320px to pull the filters up closer to the navbar */
-        padding-top: 100px !important; 
-    }
-}
-    /* =========================================
-   RESTORED: VERTICAL STACKED PILLS (MOBILE)
-   Paste this at the VERY BOTTOM of style.css
-   ========================================= */
-@media (max-width: 768px) {
-    
-    /* 1. Reset Navbar Padding */
-    #navbar {
-        padding-top: 10px;
-    }
-
-    /* 2. Main Container: Stack Vertically */
+    /* 1. Main Container: Stack Vertically */
     .nav-container {
         display: flex !important;
-        flex-direction: column !important; /* Force stack */
+        flex-direction: column !important;
         margin: 0 15px;
         padding: 20px;
         gap: 15px;
-        height: auto;
         
         /* Glass Box Style */
         border-radius: 30px; 
@@ -1738,50 +1676,41 @@ body.projects-page .carousel-card .card-overlay p {
         border: 1px solid rgba(255, 255, 255, 0.4);
     }
 
-    /* 3. Logo Size */
+    /* 2. Logo Size */
     .logo {
         font-size: 26px;
         margin: 0;
     }
 
-    /* 4. Links Container: Stack Vertically */
+    /* 3. Links Container: Stack Vertically */
     .nav-links {
         display: flex !important;
-        flex-direction: column !important; /* Vertical column */
+        flex-direction: column !important;
         width: 100%;
         gap: 10px;
-        
-        /* DISABLE Horizontal Scroll */
-        overflow-x: visible !important;
-        white-space: normal !important;
+        overflow-x: visible !important; /* Disable horizontal scroll */
     }
 
-    .nav-links li {
-        width: 100%;
-        margin: 0; /* Reset any margins */
-    }
-
-    /* 5. The Pills */
+    /* 4. The Pills */
     .nav-links a {
-        display: block; /* Full width */
+        display: block;
         width: 100%;
         text-align: center;
         padding: 12px;
-        
         background: rgba(255, 255, 255, 0.3);
         border-radius: 50px;
         border: 1px solid rgba(255, 255, 255, 0.4);
-        
         font-size: 16px;
         color: #800000;
         font-weight: 600;
     }
 
-    /* 6. Shrink State (Optional: Hides links when scrolling) */
+    /* 5. Shrink State (Hides links on scroll) */
     #navbar.shrink .nav-container {
         flex-direction: row !important;
         padding: 15px;
         background: rgba(255, 255, 255, 0.95);
+        border-radius: 0;
     }
     #navbar.shrink .nav-links {
         display: none !important;

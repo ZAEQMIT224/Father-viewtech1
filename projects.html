@@ -14,14 +14,41 @@
         min-height: 100vh; /* Ensures it fills the screen */
         }
         /* =========================================
-   FIX THE GAP ON PROJECTS PAGE (MOBILE)
-   ========================================= */
-@media (max-width: 768px) {
-    #projects-catalog {
-        /* Reduced to 320px to pull the filters up closer to the navbar */
-        padding-top: 100px !important; 
+        FIX THE GAP ON PROJECTS PAGE (MOBILE)
+        ========================================= */
+        /* =========================================
+       PROJECTS PAGE ONLY: SLIM NAVBAR OVERRIDE
+       ========================================= */
+    @media (max-width: 768px) {
+        /* Force Horizontal Layout just for this page */
+        #navbar .nav-container {
+            flex-direction: column !important;
+            padding: 12px 15px !important;
+            gap: 12px !important;
+            border-radius: 20px !important;
+            background: rgba(255, 255, 255, 0.65) !important;
+        }
+
+        #navbar .nav-links {
+            display: flex !important;
+            flex-direction: row !important; /* Horizontal */
+            overflow-x: auto !important; /* Scrollable */
+            padding-bottom: 2px !important;
+        }
+
+        #navbar .nav-links a {
+            display: block !important;
+            width: auto !important;
+            padding: 8px 16px !important;
+            font-size: 13px !important;
+            border-radius: 20px !important;
+        }
+        
+        /* Pull content up so it fits under slim navbar */
+        #projects-catalog {
+            padding-top: 100px !important; 
+        }
     }
-}
         </style>
 </head>
 <body class="projects-page">
@@ -360,7 +387,7 @@
     // --- NAVBAR SHRINK SCRIPT ---
     window.addEventListener("scroll", function () {
         const navbar = document.getElementById("navbar");
-
+        // Trigger shrink class after 50px of scrolling
         if (window.scrollY > 50) {
             navbar.classList.add("shrink");
         } else {
