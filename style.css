@@ -1651,3 +1651,88 @@ body.projects-page .carousel-card .card-overlay p {
     letter-spacing: 0.5px;
     margin: 0;
 }
+/* =========================================
+   MOBILE "STACKED PILLS" ANIMATION
+   ========================================= */
+@media (max-width: 768px) {
+    
+    /* 1. INITIAL STATE: Tall & Stacked */
+    #navbar {
+        padding-top: 10px;
+        transition: all 0.4s ease;
+    }
+
+    .nav-container {
+        flex-direction: column; /* Stack logo on top of links */
+        margin: 0 15px;
+        padding: 20px;
+        gap: 15px;
+        
+        /* Glass styling for the big open container */
+        border-radius: 30px; 
+        background: rgba(255, 255, 255, 0.25);
+        backdrop-filter: blur(20px);
+    }
+
+    /* 2. THE PILLS (Links) */
+    .nav-links {
+        display: flex;
+        flex-direction: column; /* Stack them vertically */
+        width: 100%;
+        gap: 10px;
+    }
+
+    .nav-links li {
+        width: 100%;
+        list-style: none;
+    }
+
+    .nav-links a {
+        display: block; /* Make link fill the width */
+        text-align: center;
+        padding: 12px;
+        
+        /* PILL SHAPE STYLING */
+        background: rgba(255, 255, 255, 0.3); /* Slightly lighter glass */
+        border-radius: 50px; /* Fully rounded ends */
+        border: 1px solid rgba(255, 255, 255, 0.4);
+        
+        font-size: 16px;
+        color: #800000;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    /* Active/Touch effect for pills */
+    .nav-links a:active {
+        transform: scale(0.98);
+        background: rgba(255, 255, 255, 0.6);
+    }
+
+    /* 3. SHRINK STATE (Scrolling Down) */
+    /* When you scroll, everything snaps up */
+    
+    #navbar.shrink {
+        padding-top: 0;
+    }
+
+    #navbar.shrink .nav-container {
+        flex-direction: row; /* Align horizontal again */
+        justify-content: center; /* Center the logo */
+        padding: 15px;
+        border-radius: 0; /* Square off corners */
+        background: rgba(255, 255, 255, 0.95); /* Solid background */
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    /* HIDE the pills when shrunk to simulate them "zipping up" */
+    #navbar.shrink .nav-links {
+        display: none; 
+        /* This makes the menu collapse completely, leaving just the bar/logo */
+    }
+
+    #navbar.shrink .logo {
+        font-size: 22px;
+        margin: 0;
+    }
+}
