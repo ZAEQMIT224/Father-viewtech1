@@ -312,6 +312,28 @@
                 height: 250px;
             }
         }
+        /* =========================================
+       MOBILE FIX: FORCE TEXT DOWN (EXPERTISE)
+       ========================================= */
+    @media (max-width: 768px) {
+        #expertise-hero {
+            /* 1. Stop centering the text vertically */
+            display: flex !important;
+            align-items: flex-start !important;
+            
+            /* 2. Push the text WAY down below the glass menu */
+            padding-top: 450px !important; 
+            
+            /* 3. Make sure the section is tall enough to fit it */
+            height: auto !important;
+            min-height: 120vh !important;
+        }
+        
+        #expertise-hero .container {
+            /* 4. Ensure the text inside doesn't float up */
+            margin-top: 20px !important;
+        }
+    }
     </style>
 </head>
 <body>
