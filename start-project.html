@@ -239,6 +239,27 @@
                 font-size: 2rem;
             }
         }
+         @media (max-width: 768px) {
+        #start-hero {
+            /* 1. FIX OVERLAP: Push content down to clear the tall navbar */
+            padding-top: 400px !important; 
+            
+            /* 2. ALIGNMENT: Stop the text from centering behind the menu */
+            align-items: flex-start !important;
+            
+            /* 3. FIX THE MASSIVE GAP: Stop forcing full-screen height */
+            min-height: auto !important; 
+            height: auto !important; 
+            
+            /* 4. Add a little breathing room at the bottom */
+            padding-bottom: 50px !important;
+        }
+
+        #start-hero .container {
+            /* Reset margins */
+            margin-top: 0 !important;
+        }
+    }
     </style>
 </head>
 <body class="projects-page">
