@@ -1652,89 +1652,100 @@ body.projects-page .carousel-card .card-overlay p {
     margin: 0;
 }
 /* =========================================
-   MOBILE "STACKED PILLS" ANIMATION
+   GLOBAL MOBILE NAVBAR (Stacked Pills)
+   Put this in style.css
    ========================================= */
 @media (max-width: 768px) {
-    
-    /* 1. INITIAL STATE: Tall & Stacked */
     #navbar {
         padding-top: 10px;
-        transition: all 0.4s ease;
     }
-
     .nav-container {
-        flex-direction: column; /* Stack logo on top of links */
+        flex-direction: column;
         margin: 0 15px;
         padding: 20px;
         gap: 15px;
-        
-        /* Glass styling for the big open container */
         border-radius: 30px; 
         background: rgba(255, 255, 255, 0.25);
         backdrop-filter: blur(20px);
     }
-
-    /* 2. THE PILLS (Links) */
     .nav-links {
         display: flex;
-        flex-direction: column; /* Stack them vertically */
+        flex-direction: column;
         width: 100%;
         gap: 10px;
     }
-
-    .nav-links li {
-        width: 100%;
-        list-style: none;
-    }
-
     .nav-links a {
-        display: block; /* Make link fill the width */
+        display: block;
         text-align: center;
         padding: 12px;
-        
-        /* PILL SHAPE STYLING */
-        background: rgba(255, 255, 255, 0.3); /* Slightly lighter glass */
-        border-radius: 50px; /* Fully rounded ends */
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
         border: 1px solid rgba(255, 255, 255, 0.4);
-        
         font-size: 16px;
         color: #800000;
         font-weight: 600;
-        transition: all 0.3s ease;
     }
-
-    /* Active/Touch effect for pills */
-    .nav-links a:active {
-        transform: scale(0.98);
-        background: rgba(255, 255, 255, 0.6);
-    }
-
-    /* 3. SHRINK STATE (Scrolling Down) */
-    /* When you scroll, everything snaps up */
-    
-    #navbar.shrink {
-        padding-top: 0;
-    }
-
+    /* Shrink State */
     #navbar.shrink .nav-container {
-        flex-direction: row; /* Align horizontal again */
-        justify-content: center; /* Center the logo */
+        flex-direction: row;
         padding: 15px;
-        border-radius: 0; /* Square off corners */
-        background: rgba(255, 255, 255, 0.95); /* Solid background */
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        border-radius: 0;
+        background: rgba(255, 255, 255, 0.95);
     }
-
-    /* HIDE the pills when shrunk to simulate them "zipping up" */
     #navbar.shrink .nav-links {
         display: none; 
-        /* This makes the menu collapse completely, leaving just the bar/logo */
     }
-
     #navbar.shrink .logo {
         font-size: 22px;
         margin: 0;
     }
+    }
+    /* =========================================
+       PROJECTS PAGE ONLY - SLIM NAVBAR OVERRIDE
+       ========================================= */
+    @media (max-width: 768px) {
+        
+        /* 1. Slim Container Wrapper */
+        #navbar .nav-container {
+            flex-direction: column !important;
+            margin: 0 10px !important;
+            padding: 12px 15px !important;
+            gap: 12px !important;
+            border-radius: 20px !important;
+            background: rgba(255, 255, 255, 0.65) !important;
+        }
+
+        /* 2. Smaller Logo */
+        #navbar .logo {
+            font-size: 20px !important;
+            margin: 0 !important;
+        }
+
+        /* 3. Horizontal Scrollable Links */
+        #navbar .nav-links {
+            display: flex !important;
+            flex-direction: row !important; /* Horizontal */
+            justify-content: flex-start !important;
+            align-items: center !important;
+            width: 100% !important;
+            gap: 10px !important;
+            overflow-x: auto !important;
+            white-space: nowrap !important;
+            padding-bottom: 2px !important;
+        }
+
+        /* 4. Mini Pills Style */
+        #navbar .nav-links a {
+            display: block !important;
+            padding: 8px 16px !important;
+            font-size: 13px !important;
+            border-radius: 20px !important;
+        }
+        
+        /* 5. FIX THE CONTENT SPACING FOR THIS PAGE */
+        #projects-catalog {
+            padding-top: 160px !important; /* Perfect gap for slim navbar */
+        }
     }
     /* =========================================
    MOBILE SPACING FIX FOR PROJECTS PAGE
@@ -1742,6 +1753,6 @@ body.projects-page .carousel-card .card-overlay p {
     @media (max-width: 768px) {
     #projects-catalog {
         /* This pushes the cards down so they clear the tall mobile navbar */
-        padding-top: 480px !important; 
+        padding-top: 200px !important; 
     }
     }
