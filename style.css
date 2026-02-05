@@ -1742,6 +1742,6 @@ body.projects-page .carousel-card .card-overlay p {
     @media (max-width: 768px) {
     #projects-catalog {
         /* This pushes the cards down so they clear the tall mobile navbar */
-        padding-top: 450px !important; 
+        padding-top: 800px !important; 
     }
     }

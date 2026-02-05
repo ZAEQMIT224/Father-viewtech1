@@ -7,6 +7,19 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"> <!-- For icons -->
     <script src="https://unpkg.com/scrollreveal@4.0.9/dist/scrollreveal.min.js"></script>
+    <style>
+        /* Push the projects section down so the navbar doesn't cover it */
+        #projects-catalog {
+        padding-top: 180px; /* Increased from default */
+        min-height: 100vh; /* Ensures it fills the screen */
+        }
+        @media (max-width: 768px) {
+    #projects-catalog {
+        /* This pushes the cards down so they clear the tall mobile navbar */
+        padding-top: 800px !important; 
+    }
+    }
+        </style>
 </head>
 <body class="projects-page">
     <nav id="navbar">
@@ -306,7 +319,7 @@
             </a>
 
             <!-- WhatsApp Link -->
-            <a href="https://wa.me/918101731588"
+            <a href="https://wa.me/917908467255"
                target="_blank"
                class="social-icon glass-icon">
                 <i class="fab fa-whatsapp"></i>
@@ -341,6 +354,16 @@
     function openDetail(title) {
         window.location.href = `project-detail.html?title=${encodeURIComponent(title)}`;
     }
+    // --- NAVBAR SHRINK SCRIPT ---
+    window.addEventListener("scroll", function () {
+        const navbar = document.getElementById("navbar");
+
+        if (window.scrollY > 50) {
+            navbar.classList.add("shrink");
+        } else {
+            navbar.classList.remove("shrink");
+        }
+    });
 </script>
 
 </body>
