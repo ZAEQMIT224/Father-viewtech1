@@ -49,6 +49,58 @@
             padding-top: 100px !important; 
         }
     }
+    /* =========================================
+       PROJECTS PAGE: SLIM NAVBAR FIX (Justified)
+       Update this block in projects.html
+       ========================================= */
+    @media (max-width: 768px) {
+        
+        /* 1. Container adjustments */
+        #navbar .nav-container {
+            flex-direction: column !important;
+            padding: 12px 15px !important;
+            gap: 12px !important;
+            border-radius: 20px !important;
+            background: rgba(255, 255, 255, 0.65) !important;
+        }
+
+        #navbar .logo {
+            font-size: 20px !important;
+            margin: 0 !important;
+        }
+
+        /* 2. THE LINKS (JUSTIFIED) */
+        #navbar .nav-links {
+            display: flex !important;
+            flex-direction: row !important;
+            
+            /* CHANGE THIS: Spreads items across the full width */
+            justify-content: space-between !important; 
+            
+            align-items: center !important;
+            width: 100% !important;
+            gap: 5px !important; /* Smaller gap since spacing handles the rest */
+            
+            overflow-x: auto !important;
+            padding-bottom: 2px !important;
+        }
+
+        /* 3. The Pills */
+        #navbar .nav-links a {
+            display: block !important;
+            /* Allow them to shrink slightly if needed on tiny screens */
+            flex: 1 1 auto !important; 
+            text-align: center !important;
+            padding: 8px 10px !important; /* Slightly tighter padding */
+            font-size: 13px !important;
+            border-radius: 20px !important;
+            white-space: nowrap !important;
+        }
+        
+        #projects-catalog {
+            padding-top: 160px !important; 
+        }
+    }
         </style>
 </head>
 <body class="projects-page">
@@ -59,7 +111,7 @@
                 <li><a href="index.html">Home</a></li>
                 <li><a href="expertise.html">Expertise</a></li>
                 <li><a href="start-project.html">Start</a></li>
-                <li><a href="contact.html">Contact</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
