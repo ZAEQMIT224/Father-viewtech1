@@ -1735,4 +1735,13 @@ body.projects-page .carousel-card .card-overlay p {
         font-size: 22px;
         margin: 0;
     }
-}
+    }
+    /* =========================================
+   MOBILE SPACING FIX FOR PROJECTS PAGE
+   ========================================= */
+    @media (max-width: 768px) {
+    #projects-catalog {
+        /* This pushes the cards down so they clear the tall mobile navbar */
+        padding-top: 450px !important; 
+    }
+    }
