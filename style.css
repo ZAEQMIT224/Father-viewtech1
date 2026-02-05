@@ -1725,7 +1725,7 @@ body.projects-page .carousel-card .card-overlay p {
     @media (max-width: 768px) {
     #expertise-hero {
         /* 1. Push content down below the tall navbar */
-        padding-top: 420px !important; 
+        padding-top: 700px !important; 
         
         /* 2. Ensure the section is tall enough to fit everything */
         min-height: 110vh !important; 
